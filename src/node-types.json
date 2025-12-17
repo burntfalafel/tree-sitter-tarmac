@@ -226,6 +226,10 @@
         {
           "type": "meta",
           "named": true
+        },
+        {
+          "type": "tarmac_trace",
+          "named": true
         }
       ]
     }
@@ -276,6 +280,54 @@
     "type": "string",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "tarmac_trace",
+    "named": true,
+    "fields": {
+      "actual_instruction": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "instruction",
+            "named": true
+          }
+        ]
+      },
+      "cycle": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "int",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "float",
+          "named": true
+        },
+        {
+          "type": "int",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "word",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "tc_infix",
@@ -442,6 +494,10 @@
     "named": false
   },
   {
+    "type": "clk",
+    "named": false
+  },
+  {
     "type": "const",
     "named": false
   },
@@ -475,11 +531,11 @@
   },
   {
     "type": "word",
-    "named": false
+    "named": true
   },
   {
     "type": "word",
-    "named": true
+    "named": false
   },
   {
     "type": "{",

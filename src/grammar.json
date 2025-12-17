@@ -57,6 +57,10 @@
       "members": [
         {
           "type": "SYMBOL",
+          "name": "tarmac_trace"
+        },
+        {
+          "type": "SYMBOL",
           "name": "meta"
         },
         {
@@ -362,6 +366,71 @@
               }
             }
           ]
+        }
+      ]
+    },
+    "tarmac_trace": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "cycle",
+          "content": {
+            "type": "SYMBOL",
+            "name": "int"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "clk"
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_tarmac_prefix_token"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ":"
+        },
+        {
+          "type": "FIELD",
+          "name": "actual_instruction",
+          "content": {
+            "type": "SYMBOL",
+            "name": "instruction"
+          }
+        }
+      ]
+    },
+    "_tarmac_prefix_token": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "word"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "int"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "float"
+        },
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "STRING",
+          "value": ")"
         }
       ]
     },

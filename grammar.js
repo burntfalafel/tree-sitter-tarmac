@@ -16,6 +16,7 @@ module.exports = grammar({
         program: $ => sep(repeat1('\n'), $._item),
         _item: $ =>
             choice(
+                $.tarmac_trace,
                 $.meta,
                 $.label,
                 $.const,
@@ -45,7 +46,32 @@ module.exports = grammar({
                 ),
             ),
         const: $ => seq('const', field('name', $.word), field('value', $._tc_expr)),
-        instruction: $ => seq(field('kind', $.word), choice(sep(',', $._expr), repeat($._tc_expr))),
+        instruction: $ =>
+            seq(
+                field('kind', $.word),
+                choice(sep(',', $._expr), repeat($._tc_expr)),
+            ),
+
+        // Tarmac trace line with decoded instruction after ':'
+        tarmac_trace: $ =>
+            seq(
+                field('cycle', $.int),
+                'clk',
+                repeat1($._tarmac_prefix_token),
+                ':',
+                field('actual_instruction', $.instruction),
+            ),
+
+        _tarmac_prefix_token: $ =>
+            choice(
+                $.word,
+                $.int,
+                $.string,
+                $.float,
+                '(',
+                ')',
+            ),
+
         _expr: $ => choice($.ptr, $.ident, $.int, $.string, $.float, $.list),
 
         // ARMv7
