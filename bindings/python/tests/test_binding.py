@@ -1,11 +1,11 @@
 from unittest import TestCase
 
-import tree_sitter, tree_sitter_asm
+import tree_sitter, tree_sitter_tarmac
 
 
 class TestLanguage(TestCase):
     def test_can_load_grammar(self):
         try:
-            tree_sitter.Language(tree_sitter_asm.language())
+            tree_sitter.Language(tree_sitter_tarmac.language())
         except Exception:
-            self.fail("Error loading Asm grammar")
+            self.fail("Error loading Tarmac grammar")

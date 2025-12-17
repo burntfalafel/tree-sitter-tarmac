@@ -1,13 +1,38 @@
-# tree-sitter-asm
+# tree-sitter-tarmac
 
-Generic assembly grammar for
-[tree-sitter](https://github.com/tree-sitter/tree-sitter)
+Tree-sitter grammar for Arm Tarmac trace logs.
+
+This grammar is intentionally lightweight and aimed at providing good
+syntax highlighting and basic structure for Tarmac log files rather
+than full semantic decoding of every ARM instruction.
 
 ## Usage in Neovim
 
-### Parser Installation
+You can use this grammar with
+[nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+by pointing a custom parser configuration at this repository and
+associating your Tarmac trace files with the `tarmac` filetype.
 
-The parser is included in the
-[nvim-treesitter plugin](https://github.com/nvim-treesitter/nvim-treesitter). To
-use it, simply install it with `:TSInstall asm` or by adding it to your
-`ensure_installed` list.
+Example (Lua):
+
+```lua
+local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+
+parser_config.tarmac = {
+  install_info = {
+    url = '/absolute/path/to/tree-sitter-tarmac',
+    files = { 'src/parser.c' },
+    generate_requires_npm = true,
+  },
+  filetype = 'tarmac',
+}
+
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+  pattern = '*.tarmac',
+  callback = function()
+    vim.bo.filetype = 'tarmac'
+  end,
+})
+```
+
+Then enable highlighting via `nvim-treesitter` as usual.

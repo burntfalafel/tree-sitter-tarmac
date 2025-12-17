@@ -1,5 +1,5 @@
 {
-  "name": "asm",
+  "name": "tarmac",
   "rules": {
     "program": {
       "type": "CHOICE",
@@ -1121,3 +1121,4 @@
   "inline": [],
   "supertypes": []
 }
+

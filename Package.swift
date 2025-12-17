@@ -2,16 +2,16 @@
 import PackageDescription
 
 let package = Package(
-    name: "TreeSitterAsm",
+    name: "TreeSitterTarmac",
     products: [
-        .library(name: "TreeSitterAsm", targets: ["TreeSitterAsm"]),
+        .library(name: "TreeSitterTarmac", targets: ["TreeSitterTarmac"]),
     ],
     dependencies: [
         .package(url: "https://github.com/ChimeHQ/SwiftTreeSitter", from: "0.8.0"),
     ],
     targets: [
         .target(
-            name: "TreeSitterAsm",
+            name: "TreeSitterTarmac",
             dependencies: [],
             path: ".",
             sources: [
@@ -25,10 +25,10 @@ let package = Package(
             cSettings: [.headerSearchPath("src")]
         ),
         .testTarget(
-            name: "TreeSitterAsmTests",
+            name: "TreeSitterTarmacTests",
             dependencies: [
                 "SwiftTreeSitter",
-                "TreeSitterAsm",
+                "TreeSitterTarmac",
             ],
             path: "bindings/swift/TreeSitterAsmTests"
         )

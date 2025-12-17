@@ -1,5 +1,5 @@
 module.exports = grammar({
-    name: 'asm',
+    name: 'tarmac',
     extras: $ => [
         / |\t|\r/,
         $.line_comment,

@@ -1,30 +1,26 @@
 {
   "grammars": [
     {
-      "name": "asm",
-      "camelcase": "Asm",
-      "scope": "source.asm",
+      "name": "tarmac",
+      "camelcase": "Tarmac",
+      "scope": "source.tarmac",
       "path": ".",
-      "file-types": [
-        "s",
-        "asm",
-        "assembly"
-      ],
-      "highlights": "queries/asm/highlights.scm",
-      "injections": "queries/asm/injections.scm"
+      "file-types": ["tarmac"],
+      "highlights": "queries/tarmac/highlights.scm",
+      "injections": "queries/tarmac/injections.scm"
     }
   ],
   "metadata": {
     "version": "0.1.0",
     "license": "MIT",
-    "description": "assembly grammar for tree-sitter",
+    "description": "Tarmac trace grammar for tree-sitter",
     "authors": [
       {
-        "name": "RubixDev"
+        "name": "Tree-sitter Tarmac"
       }
     ],
     "links": {
-      "repository": "https://github.com/RubixDev/tree-sitter-asm"
+      "repository": "https://example.com/tree-sitter-tarmac"
     }
   },
   "bindings": {

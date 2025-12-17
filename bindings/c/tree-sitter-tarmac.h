@@ -14,3 +14,4 @@ const TSLanguage *tree_sitter_tarmac(void);
 #endif
 
 #endif // TREE_SITTER_TARMAC_H_
+

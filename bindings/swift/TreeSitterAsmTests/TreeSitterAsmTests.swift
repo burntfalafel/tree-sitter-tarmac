@@ -1,12 +1,12 @@
 import XCTest
 import SwiftTreeSitter
-import TreeSitterAsm
+import TreeSitterTarmac
 
-final class TreeSitterAsmTests: XCTestCase {
+final class TreeSitterTarmacTests: XCTestCase {
     func testCanLoadGrammar() throws {
         let parser = Parser()
-        let language = Language(language: tree_sitter_asm())
+        let language = Language(language: tree_sitter_tarmac())
         XCTAssertNoThrow(try parser.setLanguage(language),
-                         "Error loading Asm grammar")
+                         "Error loading Tarmac grammar")
     }
 }

@@ -1,4 +1,4 @@
-module github.com/RubixDev/tree-sitter-asm
+module github.com/RubixDev/tree-sitter-tarmac
 
 go 1.22
 

@@ -1,11 +1,11 @@
 [package]
-name = "tree-sitter-asm"
-description = "assembly grammar for the tree-sitter parsing library"
-authors = ["RubixDev"]
+name = "tree-sitter-tarmac"
+description = "Tarmac trace grammar for the tree-sitter parsing library"
+authors = ["tree-sitter-tarmac"]
 version = "0.24.0"
-keywords = ["incremental", "parsing", "tree-sitter", "asm"]
+keywords = ["incremental", "parsing", "tree-sitter", "tarmac"]
 categories = ["parsing", "text-editors"]
-repository = "https://github.com/RubixDev/tree-sitter-asm"
+repository = "https://example.com/tree-sitter-tarmac"
 edition = "2021"
 license = "MIT"
 readme = "README.md"

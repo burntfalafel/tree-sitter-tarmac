@@ -14,5 +14,5 @@ fn main() {
     #[cfg(feature = "wasm")]
     tree_sitter_wasm_build_tool::add_wasm_headers(&mut c_config).unwrap();
 
-    c_config.compile("tree-sitter-asm");
+    c_config.compile("tree-sitter-tarmac");
 }

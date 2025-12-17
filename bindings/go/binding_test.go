@@ -1,15 +1,15 @@
-package tree_sitter_asm_test
+package tree_sitter_tarmac_test
 
 import (
 	"testing"
 
 	tree_sitter "github.com/tree-sitter/go-tree-sitter"
-	tree_sitter_asm "github.com/RubixDev/tree-sitter-asm/bindings/go"
+	tree_sitter_tarmac "github.com/RubixDev/tree-sitter-tarmac/bindings/go"
 )
 
 func TestCanLoadGrammar(t *testing.T) {
-	language := tree_sitter.NewLanguage(tree_sitter_asm.Language())
+	language := tree_sitter.NewLanguage(tree_sitter_tarmac.Language())
 	if language == nil {
-		t.Errorf("Error loading Asm grammar")
+		t.Errorf("Error loading Tarmac grammar")
 	}
 }

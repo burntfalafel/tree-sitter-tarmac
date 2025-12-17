@@ -1,7 +1,7 @@
 {
-  "name": "tree-sitter-asm",
+  "name": "tree-sitter-tarmac",
   "version": "0.1.0",
-  "description": "assembly grammar for tree-sitter",
+  "description": "Tarmac trace grammar for tree-sitter",
   "main": "bindings/node",
   "types": "bindings/node",
   "scripts": {
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/RubixDev/tree-sitter-asm"
+    "url": "https://example.com/tree-sitter-tarmac"
   },
   "keywords": [
     "parser",
@@ -26,14 +26,14 @@
     "queries/*",
     "src/**"
   ],
-  "author": "RubixDev",
+  "author": "burntfalafel",
   "license": "MIT",
   "dependencies": {
     "node-addon-api": "^7.1.0",
     "node-gyp-build": "^4.8.0"
   },
   "peerDependencies": {
-    "tree-sitter": "^0.22.6"
+    "tree-sitter": "^0.20.6"
   },
   "peerDependenciesMeta": {
     "tree_sitter": {
@@ -42,6 +42,6 @@
   },
   "devDependencies": {
     "prebuildify": "^6.0.1",
-    "tree-sitter-cli": "^0.22.6"
+    "tree-sitter-cli": "^0.20.8"
   }
 }
