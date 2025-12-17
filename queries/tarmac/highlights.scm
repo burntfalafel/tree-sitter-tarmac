@@ -32,10 +32,6 @@
   (#set! priority 190)
   (#match? @mmu "^(LPAE|BLOCK|FAULT|FILL|EVICT)$"))
 
-((word) @mmu
-  (#set! priority 180)
-  (#match? @mmu "^(IRTBRP_EL1|IRTBRU_EL1|LDSTT_EL1)$"))
-
 ; Decoded instruction text on Tarmac trace lines
 (tarmac_trace
   (instruction) @actual_instruction)

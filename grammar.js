@@ -58,7 +58,7 @@ module.exports = grammar({
                 field('cycle', $.int),
                 'clk',
                 repeat1($._tarmac_prefix_token),
-                ':',
+                ' : ',
                 field('actual_instruction', $.instruction),
             ),
 
