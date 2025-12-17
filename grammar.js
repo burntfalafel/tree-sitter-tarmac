@@ -50,8 +50,7 @@ module.exports = grammar({
         testcase: $ =>
             seq(
                 '**',
-                'Running',
-                ':',
+                ' ',
                 field('name', $.word),
                 '**',
             ),

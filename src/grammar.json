@@ -313,11 +313,7 @@
         },
         {
           "type": "STRING",
-          "value": "Running"
-        },
-        {
-          "type": "STRING",
-          "value": ":"
+          "value": " "
         },
         {
           "type": "FIELD",
