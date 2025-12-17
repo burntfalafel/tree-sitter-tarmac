@@ -3,9 +3,7 @@
    [(ident) (word) (meta_ident)] @label)
  (#set! priority 110))
 
-[
- "clk"
-] @clock
+"clk" @clock
 
 ; Registers
 ((reg) @gprs
