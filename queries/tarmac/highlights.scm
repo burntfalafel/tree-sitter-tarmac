@@ -24,13 +24,14 @@
   name: (word) @constant)
 
 ; MMU / translation events
-((word) @mmu
+((word) @mmu_events
   (#set! priority 200)
-  (#match? @mmu "^(TTW|TLB|PLB|ITLB|DTLB|UTLB|IRTP|IRTU|DPOT0)$"))
+  (#match? @mmu_events "^(TTW|TLB|PLB|ITLB|DTLB|UTLB|IRTP|IRTU|DPOT0|LPAE)$"))
 
-((word) @mmu
-  (#set! priority 190)
-  (#match? @mmu "^(LPAE|BLOCK|FAULT|FILL|EVICT)$"))
+((instruction
+   kind: (word) @mmu_events)
+  (#set! priority 210)
+  (#match? @mmu_events "^(BLOCK|FAULT|FILL|EVICT)$"))
 
 ; Decoded instruction text on Tarmac trace lines
 (tarmac_trace
