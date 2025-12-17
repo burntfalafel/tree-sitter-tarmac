@@ -10,6 +10,10 @@ module.exports = grammar({
             $._expr,
             $._tc_expr,
         ],
+        [
+            $.tarmac_trace,
+            $._tarmac_prefix_token,
+        ],
     ],
 
     rules: {
@@ -50,8 +54,7 @@ module.exports = grammar({
         testcase: $ =>
             seq(
                 '**',
-                ' ',
-                field('name', $.word),
+                field('name', repeat1(choice($.word, ':'))),
                 '**',
             ),
         instruction: $ =>
@@ -60,14 +63,25 @@ module.exports = grammar({
                 choice(sep(',', $._expr), repeat($._tc_expr)),
             ),
 
-        // Tarmac trace line with decoded instruction after ':'
+        // Tarmac trace lines
         tarmac_trace: $ =>
-            seq(
-                field('cycle', $.int),
-                'clk',
-                repeat1($._tarmac_prefix_token),
-                ' : ',
-                field('actual_instruction', $.instruction),
+            choice(
+                // Full trace line with decoded instruction after ':'
+                seq(
+                    field('cycle', $.int),
+                    'clk',
+                    repeat1($._tarmac_prefix_token),
+                    ' : ',
+                    field('actual_instruction', $.instruction),
+                ),
+                // Simple trace line: cycle, kind, name, value
+                seq(
+                    field('cycle', $.int),
+                    'clk',
+                    field('kind', $.word),
+                    field('name', $.word),
+                    field('value', $.int),
+                ),
             ),
 
         _tarmac_prefix_token: $ =>

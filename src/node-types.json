@@ -293,7 +293,7 @@
     "fields": {
       "actual_instruction": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "instruction",
@@ -304,6 +304,36 @@
       "cycle": {
         "multiple": false,
         "required": true,
+        "types": [
+          {
+            "type": "int",
+            "named": true
+          }
+        ]
+      },
+      "kind": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "word",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "word",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": false,
         "types": [
           {
             "type": "int",
@@ -428,9 +458,13 @@
     "named": true,
     "fields": {
       "name": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": ":",
+            "named": false
+          },
           {
             "type": "word",
             "named": true
@@ -441,10 +475,6 @@
   },
   {
     "type": "\n",
-    "named": false
-  },
-  {
-    "type": " ",
     "named": false
   },
   {

@@ -1,0 +1,20 @@
+==========
+Testcase with colon and name
+==========
+** Running: meow **
+---
+(program
+    (testcase
+        name: (word)
+        name: (word)))
+
+==========
+Testcase with multi-word text
+==========
+** TEST RUNNING **
+---
+(program
+    (testcase
+        name: (word)
+        name: (word)))
+

@@ -312,15 +312,23 @@
           "value": "**"
         },
         {
-          "type": "STRING",
-          "value": " "
-        },
-        {
           "type": "FIELD",
           "name": "name",
           "content": {
-            "type": "SYMBOL",
-            "name": "word"
+            "type": "REPEAT1",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "word"
+                },
+                {
+                  "type": "STRING",
+                  "value": ":"
+                }
+              ]
+            }
           }
         },
         {
@@ -400,38 +408,84 @@
       ]
     },
     "tarmac_trace": {
-      "type": "SEQ",
+      "type": "CHOICE",
       "members": [
         {
-          "type": "FIELD",
-          "name": "cycle",
-          "content": {
-            "type": "SYMBOL",
-            "name": "int"
-          }
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "cycle",
+              "content": {
+                "type": "SYMBOL",
+                "name": "int"
+              }
+            },
+            {
+              "type": "STRING",
+              "value": "clk"
+            },
+            {
+              "type": "REPEAT1",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_tarmac_prefix_token"
+              }
+            },
+            {
+              "type": "STRING",
+              "value": " : "
+            },
+            {
+              "type": "FIELD",
+              "name": "actual_instruction",
+              "content": {
+                "type": "SYMBOL",
+                "name": "instruction"
+              }
+            }
+          ]
         },
         {
-          "type": "STRING",
-          "value": "clk"
-        },
-        {
-          "type": "REPEAT1",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_tarmac_prefix_token"
-          }
-        },
-        {
-          "type": "STRING",
-          "value": " : "
-        },
-        {
-          "type": "FIELD",
-          "name": "actual_instruction",
-          "content": {
-            "type": "SYMBOL",
-            "name": "instruction"
-          }
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "cycle",
+              "content": {
+                "type": "SYMBOL",
+                "name": "int"
+              }
+            },
+            {
+              "type": "STRING",
+              "value": "clk"
+            },
+            {
+              "type": "FIELD",
+              "name": "kind",
+              "content": {
+                "type": "SYMBOL",
+                "name": "word"
+              }
+            },
+            {
+              "type": "FIELD",
+              "name": "name",
+              "content": {
+                "type": "SYMBOL",
+                "name": "word"
+              }
+            },
+            {
+              "type": "FIELD",
+              "name": "value",
+              "content": {
+                "type": "SYMBOL",
+                "name": "int"
+              }
+            }
+          ]
         }
       ]
     },
@@ -1213,6 +1267,10 @@
     [
       "_expr",
       "_tc_expr"
+    ],
+    [
+      "tarmac_trace",
+      "_tarmac_prefix_token"
     ]
   ],
   "precedences": [],
