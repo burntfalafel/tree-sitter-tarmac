@@ -21,6 +21,7 @@ module.exports = grammar({
                 $.label,
                 $.const,
                 $.instruction,
+                $.testcase,
             ),
 
         meta: $ =>
@@ -46,6 +47,14 @@ module.exports = grammar({
                 ),
             ),
         const: $ => seq('const', field('name', $.word), field('value', $._tc_expr)),
+        testcase: $ =>
+            seq(
+                '**',
+                'Running',
+                ':',
+                field('name', $.word),
+                '**',
+            ),
         instruction: $ =>
             seq(
                 field('kind', $.word),

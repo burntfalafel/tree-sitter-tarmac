@@ -232,6 +232,10 @@
         {
           "type": "tarmac_trace",
           "named": true
+        },
+        {
+          "type": "testcase",
+          "named": true
         }
       ]
     }
@@ -420,6 +424,22 @@
     }
   },
   {
+    "type": "testcase",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "word",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "\n",
     "named": false
   },
@@ -456,6 +476,10 @@
     "named": false
   },
   {
+    "type": "**",
+    "named": false
+  },
+  {
     "type": "+",
     "named": false
   },
@@ -473,6 +497,10 @@
   },
   {
     "type": ":",
+    "named": false
+  },
+  {
+    "type": "Running",
     "named": false
   },
   {

@@ -3,6 +3,9 @@
    [(ident) (word) (meta_ident)] @label)
  (#set! priority 110))
 
+; Testcase headers
+(testcase) @testcase
+
 "clk" @clock
 
 ; Registers
