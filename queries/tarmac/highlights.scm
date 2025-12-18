@@ -56,7 +56,13 @@
 ] @comment @spell
 
 ; Literals
-(int) @number
+;; Zero-prefixed integers (e.g. 0000000000000004)
+((int) @number.zero_prefixed
+  (#match? @number.zero_prefixed "^-?0{4,}[0-9_]*$"))
+
+;; All other integers
+((int) @number
+  (#not-match? @number "^-?0{4,}[0-9_]*$"))
 
 (float) @number.float
 
