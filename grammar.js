@@ -82,6 +82,48 @@ module.exports = grammar({
                     field('name', $.word),
                     field('value', $.int),
                 ),
+               seq(
+                    field('cycle', $.int),
+                    'clk',
+                    field('kind', $.word),
+                    field('regtype', $.word),
+                    field('name', $.word),
+                    field('value', $.string),
+                ),
+               seq(
+                    field('cycle', $.int),
+                    'clk',
+                    field('possiblekind', $.int),
+                    field('regtype', $.word),
+                    field('name', $.word),
+                    field('value', $.string),
+                ),
+                // Signal/state
+                seq(
+                  field('cycle', $.int),
+                  'clk',
+                  'SIGNAL',
+                  ':',
+                  'SIGNAL',
+                  '=',
+                  field('signal', $.word),
+                  'STATE',
+                  '=',
+                  field('state', $.word),
+                ),
+                // CoreEvent changes
+                seq(
+                    field('cycle', $.int),
+                    'clk',
+                    field('kind', $.word),
+                    field('pc', $.int),
+                    ':',
+                    field('addr', $.word),
+                    optional(field('el', $.word)), // EL3h (may be absent)
+                    field('code', $.int),
+                    field('event', $.word),
+                  ),
+
             ),
 
         _tarmac_prefix_token: $ =>

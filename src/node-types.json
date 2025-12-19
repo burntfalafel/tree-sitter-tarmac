@@ -301,12 +301,52 @@
           }
         ]
       },
+      "addr": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "word",
+            "named": true
+          }
+        ]
+      },
+      "code": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "int",
+            "named": true
+          }
+        ]
+      },
       "cycle": {
         "multiple": false,
         "required": true,
         "types": [
           {
             "type": "int",
+            "named": true
+          }
+        ]
+      },
+      "el": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "word",
+            "named": true
+          }
+        ]
+      },
+      "event": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "word",
             "named": true
           }
         ]
@@ -331,12 +371,66 @@
           }
         ]
       },
+      "pc": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "int",
+            "named": true
+          }
+        ]
+      },
+      "possiblekind": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "int",
+            "named": true
+          }
+        ]
+      },
+      "regtype": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "word",
+            "named": true
+          }
+        ]
+      },
+      "signal": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "word",
+            "named": true
+          }
+        ]
+      },
+      "state": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "word",
+            "named": true
+          }
+        ]
+      },
       "value": {
         "multiple": false,
         "required": false,
         "types": [
           {
             "type": "int",
+            "named": true
+          },
+          {
+            "type": "string",
             "named": true
           }
         ]
@@ -531,6 +625,18 @@
   },
   {
     "type": ":",
+    "named": false
+  },
+  {
+    "type": "=",
+    "named": false
+  },
+  {
+    "type": "SIGNAL",
+    "named": false
+  },
+  {
+    "type": "STATE",
     "named": false
   },
   {
