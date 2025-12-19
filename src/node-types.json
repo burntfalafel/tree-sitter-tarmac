@@ -236,6 +236,10 @@
         {
           "type": "testcase",
           "named": true
+        },
+        {
+          "type": "warning_messages",
+          "named": true
         }
       ]
     }
@@ -306,6 +310,10 @@
         "required": false,
         "types": [
           {
+            "type": "int",
+            "named": true
+          },
+          {
             "type": "word",
             "named": true
           }
@@ -356,12 +364,26 @@
         "required": false,
         "types": [
           {
+            "type": "int",
+            "named": true
+          },
+          {
             "type": "word",
             "named": true
           }
         ]
       },
       "name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "word",
+            "named": true
+          }
+        ]
+      },
+      "op": {
         "multiple": false,
         "required": false,
         "types": [
@@ -396,6 +418,20 @@
         "required": false,
         "types": [
           {
+            "type": "delimitedword",
+            "named": true
+          },
+          {
+            "type": "word",
+            "named": true
+          }
+        ]
+      },
+      "scope": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
             "type": "word",
             "named": true
           }
@@ -421,6 +457,16 @@
           }
         ]
       },
+      "status": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "word",
+            "named": true
+          }
+        ]
+      },
       "value": {
         "multiple": false,
         "required": false,
@@ -431,6 +477,26 @@
           },
           {
             "type": "string",
+            "named": true
+          }
+        ]
+      },
+      "value_hi": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "int",
+            "named": true
+          }
+        ]
+      },
+      "value_lo": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "int",
             "named": true
           }
         ]
@@ -673,6 +739,10 @@
     "named": false
   },
   {
+    "type": "delimitedword",
+    "named": true
+  },
+  {
     "type": "dword",
     "named": false
   },
@@ -699,6 +769,10 @@
   {
     "type": "rel",
     "named": false
+  },
+  {
+    "type": "warning_messages",
+    "named": true
   },
   {
     "type": "word",

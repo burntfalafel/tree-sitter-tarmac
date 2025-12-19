@@ -8,6 +8,9 @@
 
 "clk" @clock
 
+; Warnings
+(warning_messages) @warning
+
 ; Registers
 ((reg) @gprs
   (#set! priority 150)

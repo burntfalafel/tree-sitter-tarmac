@@ -26,6 +26,7 @@ module.exports = grammar({
                 $.const,
                 $.instruction,
                 $.testcase,
+                $.warning_messages,
             ),
 
         meta: $ =>
@@ -63,6 +64,9 @@ module.exports = grammar({
                 choice(sep(',', $._expr), repeat($._tc_expr)),
             ),
 
+        warning_messages: $ =>
+            token(/Warning: [^\n]*/),
+
         // Tarmac trace lines
         tarmac_trace: $ =>
             choice(
@@ -78,11 +82,12 @@ module.exports = grammar({
                 seq(
                     field('cycle', $.int),
                     'clk',
-                    field('kind', $.word),
+                    field('kind', choice($.word, $.int)),
                     field('name', $.word),
                     field('value', $.int),
                 ),
-               seq(
+                // Trace with explicit regtype and string value
+                seq(
                     field('cycle', $.int),
                     'clk',
                     field('kind', $.word),
@@ -90,7 +95,7 @@ module.exports = grammar({
                     field('name', $.word),
                     field('value', $.string),
                 ),
-               seq(
+                seq(
                     field('cycle', $.int),
                     'clk',
                     field('possiblekind', $.int),
@@ -98,11 +103,53 @@ module.exports = grammar({
                     field('name', $.word),
                     field('value', $.string),
                 ),
+                // Trace line with dotted register space
+                seq(
+                    field('cycle', $.int),
+                    'clk',
+                    field('regtype', $.delimitedword),
+                    field('kind', $.word),
+                    field('name', $.word),
+                    field('value', $.int),
+                ),
+                // Colon-separated value range
+                seq(
+                    field('cycle', $.int),
+                    'clk',
+                    field('kind', choice($.word, $.int)),
+                    field('op', $.word),
+                    field('scope', $.word),
+                    field('value_lo', $.int),
+                    ':',
+                    field('value_hi', $.int),
+                ),
+                // S1POE2 style range with address and code
+                seq(
+                    field('cycle', $.int),
+                    'clk',
+                    field('kind', $.word),
+                    field('op', $.word),
+                    field('value_lo', $.int),
+                    ':',
+                    field('addr', $.word),
+                    field('code', $.int),
+                ),
+                // abort line
+                seq(
+                    field('cycle', $.int),
+                    'clk',
+                    field('kind', $.word),
+                    optional(field('op', $.word)),
+                    field('addr', $.int),
+                    '(',
+                    field('status', $.word),
+                    ')',
+                ),
                 // Signal/state
                 seq(
-                  field('cycle', $.int),
-                  'clk',
-                  'SIGNAL',
+                    field('cycle', $.int),
+                    'clk',
+                    'SIGNAL',
                   ':',
                   'SIGNAL',
                   '=',
@@ -115,14 +162,14 @@ module.exports = grammar({
                 seq(
                     field('cycle', $.int),
                     'clk',
-                    field('kind', $.word),
+                    field('kind', choice($.word, $.int)),
                     field('pc', $.int),
                     ':',
                     field('addr', $.word),
                     optional(field('el', $.word)), // EL3h (may be absent)
                     field('code', $.int),
                     field('event', $.word),
-                  ),
+                ),
 
             ),
 
@@ -219,6 +266,7 @@ module.exports = grammar({
 	    ),
 
         word: $ => /[a-zA-Z0-9_]+/,
+        delimitedword: $ => /[a-zA-Z0-9_.]+/,
         _reg: $ => /%?[a-z0-9]+/,
         address: $ => /[=\$][a-zA-Z0-9_]+/, // GAS x86 address
         reg: $ => choice($._reg, $.word, $.address),
