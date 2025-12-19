@@ -36,3 +36,26 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
 ```
 
 Then enable highlighting via `nvim-treesitter` as usual.
+
+## Development
+
+To build the parser, ensure you have `node` and `npm` installed, then run:
+
+```bash
+npm install tree-sitter-cli
+npx tree-sitter generate
+```
+
+Or just install tree-sitter-cli locally and run:
+
+```bash
+tree-sitter generate
+```
+To test in Neovim, you can use the `:TSPlaygroundToggle` command after opening a tarmac file, OR
+
+```vimscript
+:TSUInstall tarmac
+:TSUpdate
+:InspectTree
+```
+
