@@ -422,40 +422,44 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "FIELD",
-              "name": "cycle",
-              "content": {
-                "type": "SYMBOL",
-                "name": "int"
+          "type": "PREC",
+          "value": 1,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "FIELD",
+                "name": "cycle",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "int"
+                }
+              },
+              {
+                "type": "STRING",
+                "value": "clk"
+              },
+              {
+                "type": "REPEAT1",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_tarmac_prefix_token"
+                }
+              },
+              {
+                "type": "STRING",
+                "value": " : "
+              },
+              {
+                "type": "FIELD",
+                "name": "actual_instruction",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "instruction"
+                }
               }
-            },
-            {
-              "type": "STRING",
-              "value": "clk"
-            },
-            {
-              "type": "REPEAT1",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_tarmac_prefix_token"
-              }
-            },
-            {
-              "type": "STRING",
-              "value": " : "
-            },
-            {
-              "type": "FIELD",
-              "name": "actual_instruction",
-              "content": {
-                "type": "SYMBOL",
-                "name": "instruction"
-              }
-            }
-          ]
+            ]
+          }
         },
         {
           "type": "SEQ",
@@ -992,6 +996,34 @@
               }
             }
           ]
+        },
+        {
+          "type": "PREC",
+          "value": -1,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "FIELD",
+                "name": "cycle",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "int"
+                }
+              },
+              {
+                "type": "STRING",
+                "value": "clk"
+              },
+              {
+                "type": "REPEAT",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_tarmac_prefix_token"
+                }
+              }
+            ]
+          }
         }
       ]
     },

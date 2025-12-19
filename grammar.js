@@ -71,13 +71,15 @@ module.exports = grammar({
         tarmac_trace: $ =>
             choice(
                 // Full trace line with decoded instruction after ':'
-                seq(
+                // Give this higher precedence so it wins over the
+                // generic fallback when there is a decoded instruction.
+                prec(1, seq(
                     field('cycle', $.int),
                     'clk',
                     repeat1($._tarmac_prefix_token),
                     ' : ',
                     field('actual_instruction', $.instruction),
-                ),
+                )),
                 // Simple trace line: cycle, kind, name, value
                 seq(
                     field('cycle', $.int),
@@ -170,6 +172,15 @@ module.exports = grammar({
                     field('code', $.int),
                     field('event', $.word),
                 ),
+
+                // Fallback: any line starting with cycle + 'clk'
+                // that did not match a more specific shape.
+                // Very low precedence so other patterns win.
+                prec(-1, seq(
+                    field('cycle', $.int),
+                    'clk',
+                    repeat($._tarmac_prefix_token),
+                )),
 
             ),
 
